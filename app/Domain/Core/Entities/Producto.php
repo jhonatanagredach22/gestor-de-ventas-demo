@@ -2,6 +2,7 @@
 
 namespace App\Domain\Core\Entities;
 
+use App\Domain\Core\Traits\Validaciones;
 use InvalidArgumentException;
 
 /**
@@ -17,6 +18,7 @@ use InvalidArgumentException;
 
 class Producto extends ProductoBase
 {
+    use Validaciones;
 
     /** @var int Logitud máxima permitida para el nombre del producto */
     const MAX_LONG = 50;
@@ -82,17 +84,7 @@ class Producto extends ProductoBase
      */
     public function setNombre(string $nombre): void
     {
-        $nombre = trim($nombre);
-
-        if ($nombre == '') {
-            throw new InvalidArgumentException('El nombre del producto no puede estar vacío.');
-        }
-
-        if (strlen($nombre) > self::MAX_LONG) {
-            throw new InvalidArgumentException('El nombre no puede superar los 50 caracteres.');
-        }
-
-        $this->nombre = $nombre;
+        $this->nombre = $this->validarNombre($nombre, self::MAX_LONG, 'nombre del producto');
     }
 
     /**

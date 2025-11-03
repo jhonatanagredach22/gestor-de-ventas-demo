@@ -2,6 +2,7 @@
 
 namespace App\Domain\Core\Entities;
 
+use App\Domain\Core\Traits\Validaciones;
 use InvalidArgumentException;
 
 /**
@@ -17,6 +18,8 @@ use InvalidArgumentException;
 
 class Proveedor
 {
+    use Validaciones;
+
     /** @var int Longitud máxima permitida para el nombre del proveedor */
     const MAX_LONG = 45;
 
@@ -50,17 +53,7 @@ class Proveedor
      */
     public function setNombre(string $nombre): void
     {
-        $nombre = trim($nombre);
-
-        if ($nombre == '') {
-            throw new InvalidArgumentException('El nombre no puede estar vacío.');
-        }
-
-        if (strlen($nombre) > self::MAX_LONG) {
-            throw new InvalidArgumentException('El nombre no puede superar los 45 caracteres.');
-        }
-
-        $this->nombre = $nombre;
+        $this->nombre = $this->validarNombre($nombre, self::MAX_LONG, 'nombre del proveedor');
     }
 
     /**
