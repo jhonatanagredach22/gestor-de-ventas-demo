@@ -17,7 +17,7 @@ namespace App\Domain\Core\Entities;
 abstract class ProductoBase
 {
     /** @var float IGV estándar aplicado en Perú (18%) */
-    const IGV = 0.18;
+    const IGV = 18;
         
     /**
      * Constructor base del producto.
