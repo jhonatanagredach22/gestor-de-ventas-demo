@@ -84,7 +84,7 @@ class Producto extends ProductoBase
      */
     public function setNombre(string $nombre): void
     {
-        $this->nombre = $this->validarNombre($nombre, self::MAX_LONG, 'nombre del producto');
+        $this->nombre = $this->validarNombre($nombre, self::MAX_LONG, 'El nombre del producto');
     }
 
     /**

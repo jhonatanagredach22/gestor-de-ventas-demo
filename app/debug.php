@@ -6,7 +6,7 @@ use App\Domain\Core\Entities\Informe;
 use App\Domain\Core\Entities\Producto;
 use App\Domain\Core\Entities\Proveedor;
 use App\Domain\Core\Entities\Venta;
-use DateTime;
+use App\Domain\Core\Entities\Usuario;
 
 // Prueba de la clase Producto
 
@@ -86,6 +86,26 @@ echo "\n";
 try {
     $nuevoInforme = new Informe(1, new DateTime('2025-01-10'), new DateTime('2025-05-10'));
     echo 'Informe creado correctamente';
+    echo "\n";
+} catch (\InvalidArgumentException $e) {
+    echo 'Validación: ' . $e->getMessage();
+} catch (\TypeError $e) {
+    echo 'Un valor no cumple con el tipo de dato esperado';
+} catch (\Throwable $th) {
+    echo 'Error inesperado: ' . $th->getMessage();
+}
+
+echo "\n";
+
+// Prueba de la clase Usuario
+
+try {
+    $nuevoUsuario = new Usuario('jhonatan', '12345678');
+    echo 'Usuario creado correctamente';
+    echo "\n";
+    echo Usuario::createUsername('abcd');
+    echo "\n";
+    echo Usuario::createPassword('A12345678@b');
     echo "\n";
 } catch (\InvalidArgumentException $e) {
     echo 'Validación: ' . $e->getMessage();

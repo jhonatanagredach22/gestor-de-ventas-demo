@@ -53,7 +53,7 @@ class Proveedor
      */
     public function setNombre(string $nombre): void
     {
-        $this->nombre = $this->validarNombre($nombre, self::MAX_LONG, 'nombre del proveedor');
+        $this->nombre = $this->validarNombre($nombre, self::MAX_LONG, 'El nombre del proveedor');
     }
 
     /**

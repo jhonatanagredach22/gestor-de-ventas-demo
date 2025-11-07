@@ -37,11 +37,14 @@ trait Validaciones
         $nombre = trim($nombre);
 
         if ($nombre === '') {
-            throw new InvalidArgumentException("El {$campo} no puede estar vacío.");
+            $campo = str_replace(['El', 'La'], '', $campo);
+            $campo = trim($campo);
+
+            throw new InvalidArgumentException("El campo {$campo} no puede estar vacío.");
         }
 
         if (strlen($nombre) > $longitud) {
-            throw new InvalidArgumentException("El {$campo} supera los {$longitud} caracteres.");
+            throw new InvalidArgumentException("{$campo} supera los {$longitud} caracteres.");
         }
 
         return $nombre;
