@@ -35,9 +35,6 @@ class Venta
     /** @var int Total final de la venta en centavos */
     private int $total = 0;
 
-    /** @var DateTime Fecha de la venta */
-    private DateTime $fecha;
-
     /**
      * Constructor de la clase Venta.
      * 
@@ -48,11 +45,10 @@ class Venta
      */
     public function __construct(
         private int $id,
-        DateTime $fecha,
+        private DateTime $fecha,
         public ?int $clienteId = null,
         private array $detalles = []
     ) {
-        $this->fecha = $fecha;
         $this->calcularTotales();
     }
 
@@ -134,6 +130,44 @@ class Venta
     public function getTotal(): float
     {
         return $this->total / 100;
+    }
+
+    /**
+     * Retorna el subtotal de la venta en centavos.
+     * 
+     * Este valor representa el monto total antes de aplicar impuestos
+     * o descuentos. Por ejemplo, 1250 equivale a S/ 12.50.
+     * 
+     * @return int Subtotal en centavos.
+     */
+    public function getSubtotalCentavos(): int
+    {
+        return $this->subtotal;
+    }
+
+    /**
+     * Retorna el impuesto aplicado a la venta en centavos.
+     * 
+     * Por ejemplo, 380 equivale a S/ 3.80.
+     * 
+     * @return int Impuesto en centavos.
+     */
+    public function getImpuestoCentavos(): int
+    {
+        return $this->impuesto;
+    }
+
+    /**
+     * Retorna el total final de la venta en centavos.
+     * 
+     * Incluye subtotal, impuestos y descuentos aplicados.
+     * Por ejemplo, 1630 equivale a S/ 16.30.
+     * 
+     * @return int Total en centavos.
+     */
+    public function getTotalCentavos(): int
+    {
+        return $this->total;
     }
 
     /**

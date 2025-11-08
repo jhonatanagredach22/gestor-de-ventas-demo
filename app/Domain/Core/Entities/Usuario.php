@@ -61,6 +61,8 @@ class Usuario
     {
         $username = trim($username);
 
+        $username = preg_replace('/[^A-Za-z0-9_-]/', '', $username);
+
         if ($username === '') {
             throw new InvalidArgumentException('El nombre de usuario no puede estar vacío.');
         }

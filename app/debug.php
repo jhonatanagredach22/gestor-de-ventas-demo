@@ -103,9 +103,9 @@ try {
     $nuevoUsuario = new Usuario('jhonatan', '12345678');
     echo 'Usuario creado correctamente';
     echo "\n";
-    echo Usuario::createUsername('abcd');
+    echo Usuario::createUsername('user2003');
     echo "\n";
-    echo Usuario::createPassword('A12345678@b');
+    echo Usuario::createPassword('nI/0"v<&Y46R');
     echo "\n";
 } catch (\InvalidArgumentException $e) {
     echo 'Validación: ' . $e->getMessage();
