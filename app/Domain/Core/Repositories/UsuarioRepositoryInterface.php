@@ -27,7 +27,7 @@ interface UsuarioRepositoryInterface
      * @return void
      */
     public function crearUsuario(Usuario $usuario): void;
-    
+
     /**
      * Actualiza los datos de un usuario existente.
      *
@@ -46,4 +46,15 @@ interface UsuarioRepositoryInterface
      * @return Usuario|null Usuario registrado o null si no existe.
      */
     public function mostrarUsuario(): ?Usuario;
+
+    /**
+     * Busca un usuario específico por su identificador único.
+     *
+     * Permite obtener un usuario concreto para operaciones de actualización,
+     * eliminación o verificación de autenticación.
+     *
+     * @param int $id Identificador único del usuario.
+     * @return Usuario|null Usuario encontrado o null si no existe.
+     */
+    public function buscarPorId(int $id): ?Usuario;
 }

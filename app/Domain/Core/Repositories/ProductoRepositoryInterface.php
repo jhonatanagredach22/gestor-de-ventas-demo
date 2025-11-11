@@ -29,14 +29,6 @@ interface ProductoRepositoryInterface
     public function guardar(Producto $producto): void;
 
     /**
-     * Elimina un producto por su identificador único.
-     *
-     * @param int $id Identificador del producto a eliminar.
-     * @return void
-     */
-    public function eliminar(int $id): void;
-
-    /**
      * Actualiza los datos de un producto existente.
      *
      * @param Producto $producto Instancia del producto con los datos actualizados.
@@ -60,4 +52,28 @@ interface ProductoRepositoryInterface
      * @return array<Producto>|null Lista de productos o null si no hay registros.
      */
     public function mostrarProductos(): ?array;
+
+    /**
+     * Busca un producto por su nombre.
+     *
+     * @param string $nombre Nombre del producto a buscar.
+     * @return Producto|null Devuelve la entidad Producto si existe, o null si no se encuentra.
+     */
+    public function buscarPorNombre(string $nombre): ?Producto;
+
+    /**
+     * Elimina lógicamente un producto del repositorio (soft delete).
+     *
+     * @param int $id Identificador del producto a eliminar.
+     * @return void
+     */
+    public function eliminar(int $id): void;
+
+    /**
+     * Restaura un producto previamente eliminado lógicamente.
+     *
+     * @param int $id Identificador del producto a restaurar.
+     * @return void
+     */
+    public function restaurar(int $id): void;
 }

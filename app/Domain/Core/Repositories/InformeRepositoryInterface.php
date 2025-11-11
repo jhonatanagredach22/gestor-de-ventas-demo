@@ -59,6 +59,14 @@ interface InformeRepositoryInterface
     public function mostrarInformes(): ?array;
 
     /**
+     * Busca un informe específico por su identificador.
+     *
+     * @param int $id Identificador del informe.
+     * @return Informe|null Informe encontrado o null si no existe.
+     */
+    public function buscarPorId(int $id): ?Informe;
+
+    /**
      * Busca informes generados en una fecha específica.
      *
      * @param DateTime $fecha Fecha en la que se desea buscar informes.

@@ -22,6 +22,21 @@ use DateTime;
 interface CajaRepositoryInterface
 {
     /**
+     * Guarda una nueva caja abierta en el repositorio.
+     *
+     * @param Caja $caja
+     * @return void
+     */
+    public function guardarCaja(Caja $caja): void;
+
+    /**
+     * Retorna la caja actualmente activa (abierta), si existe.
+     *
+     * @return Caja|null Caja abierta o null si no hay ninguna activa.
+     */
+    public function obtenerCajaActiva(): ?Caja;
+
+    /**
      * Registra o actualiza la información de una caja cerrada.
      *
      * Este método se ejecuta cuando una caja se cierra, permitiendo
@@ -43,6 +58,14 @@ interface CajaRepositoryInterface
      * @return array<Caja>|null Lista de cajas cerradas o null si no hay registros.
      */
     public function listarCajasCerradas(): ?array;
+
+    /**
+     * Busca una caja por su identificador único.
+     *
+     * @param int $id Identificador de la caja.
+     * @return Caja|null Caja encontrada o null si no existe.
+     */
+    public function buscarPorId(int $id): ?Caja;
 
     /**
      * Busca una caja en función de su fecha de apertura.

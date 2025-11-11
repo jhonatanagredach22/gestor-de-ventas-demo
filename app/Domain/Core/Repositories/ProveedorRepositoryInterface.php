@@ -59,5 +59,33 @@ interface ProveedorRepositoryInterface
      * @param int $id Identificador del proveedor a buscar.
      * @return Proveedor|null Devuelve la entidad Proveedor si existe, o null si no se encuentra.
      */
-    public function mostrarPorId(int $id): ?Proveedor;
+    public function buscarPorId(int $id): ?Proveedor;
+
+    /**
+     * Busca un proveedor por su nombre.
+     *
+     * @param string $nombre Nombre del proveedor a buscar.
+     * @return Proveedor|null Devuelve la entidad Proveedor si existe, o null si no se encuentra.
+     */
+    public function buscarPorNombre(string $nombre): ?Proveedor;
+
+    /**
+     * Busca un proveedor por su RUC.
+     *
+     * @param int $ruc RUC del proveedor a buscar.
+     * @return Proveedor|null Devuelve la entidad Proveedor si existe, o null si no se encuentra.
+     */
+    public function buscarPorRuc(int $ruc): ?Proveedor;
+
+    /**
+     * Verifica si un proveedor tiene productos asociados.
+     *
+     * Este método permite validar si existen registros de productos
+     * vinculados al proveedor especificado, evitando su eliminación
+     * si aún mantiene dependencias activas.
+     *
+     * @param int $idProveedor Identificador único del proveedor.
+     * @return bool TRUE si el proveedor tiene productos asociados, FALSE en caso contrario.
+     */
+    public function verificarExistenciaProductos(int $idProveedor): bool;
 }

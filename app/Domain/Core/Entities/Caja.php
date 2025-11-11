@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Jhonatan J. A. C.
  *

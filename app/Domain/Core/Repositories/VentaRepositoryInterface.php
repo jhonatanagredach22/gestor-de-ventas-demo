@@ -47,10 +47,26 @@ interface VentaRepositoryInterface
     public function mostrarVentas(): ?array;
 
     /**
+     * Busca una venta específica por su identificador.
+     *
+     * @param int $id Identificador de la venta.
+     * @return Venta|null Venta encontrada o null si no existe.
+     */
+    public function buscarPorId(int $id): ?Venta;
+
+    /**
      * Busca las ventas realizadas en una fecha específica.
      *
      * @param DateTime $fecha Fecha de búsqueda.
      * @return Venta[]|null Lista de ventas encontradas o null si no existen registros.
      */
     public function buscarPorFecha(DateTime $fecha): ?array;
+
+    /**
+     * Verifica si un producto está asociado a alguna venta activa.
+     *
+     * @param int $productoId Identificador del producto a verificar.
+     * @return bool True si está en ventas activas, false en caso contrario.
+     */
+    public function verificarExistenciaProductoEnVentas(int $productoId): bool;
 }
