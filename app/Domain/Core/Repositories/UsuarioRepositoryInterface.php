@@ -48,13 +48,23 @@ interface UsuarioRepositoryInterface
     public function mostrarUsuario(): ?Usuario;
 
     /**
-     * Busca un usuario específico por su identificador único.
+     * Busca un usuario específico por su nombre.
      *
-     * Permite obtener un usuario concreto para operaciones de actualización,
-     * eliminación o verificación de autenticación.
+     * Permite obtener un usuario concreto para verificación de autenticación.
      *
-     * @param int $id Identificador único del usuario.
+     * @param string $nombre Nombre del usuario.
      * @return Usuario|null Usuario encontrado o null si no existe.
      */
-    public function buscarPorId(int $id): ?Usuario;
+    public function buscarPorNombre(string $nombre): ?Usuario;
+
+    /**
+     * Verifica si existe un usuario registrado.
+     *
+     * Este método permite validar si existe un usuario registrado
+     * en la base de datos, para mostrar el apartado de registro si
+     * no se encuentra.
+     *
+     * @return bool TRUE si hay un usuario registrado, FALSE en caso contrario.
+     */
+    public function existeUsuario(): bool;
 }

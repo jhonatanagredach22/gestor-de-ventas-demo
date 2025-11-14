@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Jhonatan J. A. C.
  *
@@ -56,10 +57,7 @@ class Usuario
     public function __construct(
         private string $username,
         private string $password
-    ) {
-        $this->setUsername($username);
-        $this->setPassword($password);
-    }
+    ) {}
 
     // -----------------------------------------------------------------
     // VALIDACIONES PARA CREACIÓN DE NUEVOS USUARIOS
@@ -124,35 +122,9 @@ class Usuario
             throw new InvalidArgumentException('La contraseña debe incluir al menos un carácter especial.');
         }
 
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
         return $password;
-    }
-
-    // -----------------------------------------------------------------
-    // MÉTODOS DE VALIDACIÓN SIMPLIFICADA (LOGIN / ACTUALIZACIÓN)
-    // -----------------------------------------------------------------
-
-    /**
-     * Establece el nombre de usuario (validación básica).
-     *
-     * @param string $username
-     * @return void
-     * @throws InvalidArgumentException Si el nombre es inválido.
-     */
-    public function setUsername(string $username): void
-    {
-        $this->username = $this->validarNombre($username, self::MAX_LONG_NAME, 'El nombre de usuario');
-    }
-
-    /**
-     * Establece la contraseña (validación básica).
-     *
-     * @param string $password
-     * @return void
-     * @throws InvalidArgumentException Si la contraseña es inválida.
-     */
-    public function setPassword(string $password): void
-    {
-        $this->password = $this->validarNombre($password, self::MAX_LONG_PASS, 'La contraseña');
     }
 
     // -----------------------------------------------------------------
@@ -167,5 +139,15 @@ class Usuario
     public function getUsername(): string
     {
         return $this->username;
+    }
+
+    /**
+     * Retorna la contraseña.
+     *
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 }

@@ -100,12 +100,12 @@ echo "\n";
 // Prueba de la clase Usuario
 
 try {
-    $nuevoUsuario = new Usuario('jhonatan', '12345678');
+    $nuevoUsuario = new Usuario(Usuario::createUsername('user2003'), Usuario::createPassword('nI/0"v<&Y46R'));
     echo 'Usuario creado correctamente';
     echo "\n";
-    echo Usuario::createUsername('user2003');
+    echo $nuevoUsuario->getUsername();
     echo "\n";
-    echo Usuario::createPassword('nI/0"v<&Y46R');
+    echo $nuevoUsuario->getPassword();
     echo "\n";
 } catch (\InvalidArgumentException $e) {
     echo 'Validación: ' . $e->getMessage();

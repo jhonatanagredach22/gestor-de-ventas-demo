@@ -36,7 +36,7 @@ class ActualizarProveedorUseCase
     public function execute(int $id, string $nombre, int $ruc): void
     {
         // Verificar que el proveedor exista
-        $proveedor = $this->proveedorRepository->mostrarPorId($id);
+        $proveedor = $this->proveedorRepository->buscarPorId($id);
         if ($proveedor === null) {
             throw new InvalidArgumentException('El proveedor no existe.');
         }

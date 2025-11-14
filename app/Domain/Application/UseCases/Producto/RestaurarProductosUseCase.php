@@ -19,7 +19,7 @@ use InvalidArgumentException;
  */
 class RestaurarProductoUseCase
 {
-    /**
+    /**     
      * @param ProductoRepositoryInterface $productoRepository
      * Repositorio encargado de gestionar las operaciones de persistencia de productos.
      */
