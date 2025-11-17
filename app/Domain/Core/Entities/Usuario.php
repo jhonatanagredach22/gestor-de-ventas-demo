@@ -128,6 +128,20 @@ class Usuario
     }
 
     // -----------------------------------------------------------------
+    // SETTERS
+    // -----------------------------------------------------------------
+
+    public function setUsername(string $username): void
+    {
+        $this->username = Usuario::createUsername($username);
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = Usuario::createPassword($password);
+    }
+
+    // -----------------------------------------------------------------
     // GETTERS
     // -----------------------------------------------------------------
 
